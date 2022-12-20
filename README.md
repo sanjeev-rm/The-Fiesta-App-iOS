@@ -1,2 +1,2 @@
-# The-Fiesta-App-iOS
+# The Fiesta App iOS
 This is the iOS application of Fiesta.
