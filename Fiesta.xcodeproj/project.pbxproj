@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		C78C472029507F6500745D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C471F29507F6500745D90 /* AppDelegate.swift */; };
 		C78C472229507F6500745D90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C472129507F6500745D90 /* SceneDelegate.swift */; };
-		C78C472429507F6500745D90 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C472329507F6500745D90 /* ViewController.swift */; };
 		C78C472729507F6500745D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78C472529507F6500745D90 /* Main.storyboard */; };
 		C78C472929507F6700745D90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78C472829507F6700745D90 /* Assets.xcassets */; };
 		C78C472C29507F6700745D90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78C472A29507F6700745D90 /* LaunchScreen.storyboard */; };
+		C78C47342950867600745D90 /* CreatePartyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C47332950867600745D90 /* CreatePartyTableViewController.swift */; };
+		C78C473629508C3500745D90 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473529508C3500745D90 /* Party.swift */; };
+		C78C473829508CFF00745D90 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473729508CFF00745D90 /* Item.swift */; };
+		C78C473A29508D3800745D90 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473929508D3800745D90 /* Person.swift */; };
+		C78C473C29508DEB00745D90 /* PartyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473B29508DEB00745D90 /* PartyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C78C471C29507F6500745D90 /* Fiesta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiesta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78C471F29507F6500745D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C78C472129507F6500745D90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C78C472329507F6500745D90 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C78C472629507F6500745D90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C78C472829507F6700745D90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C78C472B29507F6700745D90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C78C472D29507F6700745D90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C78C47332950867600745D90 /* CreatePartyTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePartyTableViewController.swift; sourceTree = "<group>"; };
+		C78C473529508C3500745D90 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		C78C473729508CFF00745D90 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C78C473929508D3800745D90 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		C78C473B29508DEB00745D90 /* PartyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +66,15 @@
 			children = (
 				C78C471F29507F6500745D90 /* AppDelegate.swift */,
 				C78C472129507F6500745D90 /* SceneDelegate.swift */,
-				C78C472329507F6500745D90 /* ViewController.swift */,
 				C78C472529507F6500745D90 /* Main.storyboard */,
 				C78C472829507F6700745D90 /* Assets.xcassets */,
 				C78C472A29507F6700745D90 /* LaunchScreen.storyboard */,
 				C78C472D29507F6700745D90 /* Info.plist */,
+				C78C47332950867600745D90 /* CreatePartyTableViewController.swift */,
+				C78C473529508C3500745D90 /* Party.swift */,
+				C78C473729508CFF00745D90 /* Item.swift */,
+				C78C473929508D3800745D90 /* Person.swift */,
+				C78C473B29508DEB00745D90 /* PartyController.swift */,
 			);
 			path = Fiesta;
 			sourceTree = "<group>";
@@ -138,8 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C78C472429507F6500745D90 /* ViewController.swift in Sources */,
+				C78C473A29508D3800745D90 /* Person.swift in Sources */,
+				C78C473829508CFF00745D90 /* Item.swift in Sources */,
+				C78C47342950867600745D90 /* CreatePartyTableViewController.swift in Sources */,
 				C78C472029507F6500745D90 /* AppDelegate.swift in Sources */,
+				C78C473629508C3500745D90 /* Party.swift in Sources */,
+				C78C473C29508DEB00745D90 /* PartyController.swift in Sources */,
 				C78C472229507F6500745D90 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
