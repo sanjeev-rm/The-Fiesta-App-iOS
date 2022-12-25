@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C72CC8BE2954582200905AE7 /* PeopleItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72CC8BD2954582200905AE7 /* PeopleItemsTableViewController.swift */; };
+		C76B9CEF2958C03E00062A5C /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B9CEE2958C03E00062A5C /* PeopleTableViewController.swift */; };
+		C76B9CF12958C05200062A5C /* ItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76B9CF02958C05200062A5C /* ItemsTableViewController.swift */; };
 		C78C472029507F6500745D90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C471F29507F6500745D90 /* AppDelegate.swift */; };
 		C78C472229507F6500745D90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C472129507F6500745D90 /* SceneDelegate.swift */; };
 		C78C472729507F6500745D90 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78C472529507F6500745D90 /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C72CC8BD2954582200905AE7 /* PeopleItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleItemsTableViewController.swift; sourceTree = "<group>"; };
+		C76B9CEE2958C03E00062A5C /* PeopleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		C76B9CF02958C05200062A5C /* ItemsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewController.swift; sourceTree = "<group>"; };
 		C78C471C29507F6500745D90 /* Fiesta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fiesta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78C471F29507F6500745D90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C78C472129507F6500745D90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +81,9 @@
 				C78C473729508CFF00745D90 /* Item.swift */,
 				C78C473929508D3800745D90 /* Person.swift */,
 				C78C473B29508DEB00745D90 /* PartyController.swift */,
+				C72CC8BD2954582200905AE7 /* PeopleItemsTableViewController.swift */,
+				C76B9CEE2958C03E00062A5C /* PeopleTableViewController.swift */,
+				C76B9CF02958C05200062A5C /* ItemsTableViewController.swift */,
 			);
 			path = Fiesta;
 			sourceTree = "<group>";
@@ -152,10 +161,13 @@
 			files = (
 				C78C473A29508D3800745D90 /* Person.swift in Sources */,
 				C78C473829508CFF00745D90 /* Item.swift in Sources */,
+				C76B9CF12958C05200062A5C /* ItemsTableViewController.swift in Sources */,
 				C78C47342950867600745D90 /* CreatePartyTableViewController.swift in Sources */,
 				C78C472029507F6500745D90 /* AppDelegate.swift in Sources */,
 				C78C473629508C3500745D90 /* Party.swift in Sources */,
+				C72CC8BE2954582200905AE7 /* PeopleItemsTableViewController.swift in Sources */,
 				C78C473C29508DEB00745D90 /* PartyController.swift in Sources */,
+				C76B9CEF2958C03E00062A5C /* PeopleTableViewController.swift in Sources */,
 				C78C472229507F6500745D90 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CreatePartyTableViewController: UITableViewController {
-    
+class CreatePartyTableViewController: UITableViewController
+{
     @IBOutlet weak var noOfPeopleStepper: UIStepper!
     @IBOutlet weak var noOfPeopleLabel: UILabel!
     @IBOutlet weak var noOfItemsStepper: UIStepper!
@@ -40,5 +40,12 @@ class CreatePartyTableViewController: UITableViewController {
         updateView()
     }
     
-    // MARK: - Table view data source
+    // MARK: - Segue Action functions
+    
+    @IBSegueAction func peoplesName(_ coder: NSCoder, sender: Any?) -> PeopleTableViewController?
+    {
+        let peopleVC = PeopleTableViewController(coder: coder)
+        peopleVC?.noOfPeople = Int(noOfPeopleStepper.value)
+        return peopleVC
+    }
 }
