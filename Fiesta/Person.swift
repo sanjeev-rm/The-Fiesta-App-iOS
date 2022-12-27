@@ -10,5 +10,5 @@ import Foundation
 struct Person
 {
     var name : String
-    var itemsHad : [Item]
+    var itemsHad : [Item]?
 }

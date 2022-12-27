@@ -9,24 +9,92 @@ import UIKit
 
 protocol PeopleTableViewControllerDelegate
 {
-    func peopleTableViewController(_ controller: PeopleTableViewController, didCreate peopleNamesList: [String]?)
+    func peopleTableViewController(_ controller: PeopleTableViewController, didUpdatePeopleNamesOf people: [Person]?)
 }
 
 class PeopleTableViewController: UITableViewController
 {
+    var delegate: PeopleTableViewControllerDelegate?
+    
     var noOfPeople: Int?
-    var peopleNames: [String]?
+    var people: [Person]?
+    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    // MARK: - Update functions
+    
+    // MARK: - Functions
+    
+    func updateAllNames()
+    {
+        for cell in tableView.visibleCells
+        {
+            guard let indexPath = tableView.indexPath(for: cell) else { return }
+            
+            var name = (cell as! PeopleTableViewCell).nameTF.text ?? ""
+            if name == ""
+            {
+                // This is for when the user hasn't entered anything then the text will be "".
+                // Therefre assigning default value.
+                name = "Person \(indexPath.row + 1)"
+            }
+            
+            if let people = self.people
+            {
+                if indexPath.row < people.count
+                {
+                    if let itemsHad = people[indexPath.row].itemsHad
+                    {
+                        self.people![indexPath.row] = Person(name: name, itemsHad: itemsHad)
+                    }
+                    else
+                    {
+                        self.people![indexPath.row] = Person(name: name, itemsHad: nil)
+                    }
+                }
+                else
+                {
+                    self.people?.append(Person(name: name, itemsHad: nil))
+                }
+            }
+            else
+            {
+                self.people = [Person(name: name, itemsHad: nil)]
+            }
+        }
+    }
+    
+    // MARK: - Action functions
+    
+    @IBAction func updateButtonTapped(_ sender: UIBarButtonItem)
+    {
+        updateAllNames()
+        
+        print(people)
+        
+        let alertVC = UIAlertController(title: nil, message: "Default names will be inserted for fields that are empty.", preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let updateAction = UIAlertAction(title: "Update", style: .default,  handler: { action in
+            self.delegate?.peopleTableViewController(self, didUpdatePeopleNamesOf: self.people)
+        })
+        
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(updateAction)
+        
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,15 +112,21 @@ class PeopleTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personNameCell", for: indexPath)
-
-        var content = cell.defaultContentConfiguration()
-        content.text = "Hello, World!"
-        cell.contentConfiguration = content
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personNameCell", for: indexPath) as! PeopleTableViewCell
+        
+        // indexPath.row < peopleNames.count --> This condition is for situations like for when the user adds another person (n people) but the list only has n-1 names so for that situation it will throw an error. This condition prevents that. If new person is added then the system will put a new cell with the placeholder.
+        if let people = people, indexPath.row < people.count
+        {
+            cell.nameTF.text = people[indexPath.row].name
+        }
+        else
+        {
+            cell.nameTF.placeholder = "Person\(indexPath.row + 1) name"
+        }
+        
         return cell
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

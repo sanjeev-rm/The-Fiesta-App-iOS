@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreatePartyTableViewController: UITableViewController
+class CreatePartyTableViewController: UITableViewController, PeopleTableViewControllerDelegate
 {
     @IBOutlet weak var noOfPeopleStepper: UIStepper!
     @IBOutlet weak var noOfPeopleLabel: UILabel!
@@ -19,10 +19,15 @@ class CreatePartyTableViewController: UITableViewController
     
     @IBOutlet weak var calculateButton: UIButton!
     
+    var party: Party? = nil
+    var people: [Person]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateView()
+        
+        updateCalculateButtonState()
     }
     
     // MARK: - Update functions
@@ -31,6 +36,16 @@ class CreatePartyTableViewController: UITableViewController
     {
         noOfPeopleLabel.text = noOfPeopleStepper.value.formatted()
         noOfItemsLabel.text = noOfItemsStepper.value.formatted()
+    }
+    
+    func updateCalculateButtonState()
+    {
+        if party == nil
+        {
+            calculateButton.isEnabled = false
+            return
+        }
+        calculateButton.isEnabled = true
     }
     
     // MARK: - Action functions
@@ -45,7 +60,25 @@ class CreatePartyTableViewController: UITableViewController
     @IBSegueAction func peoplesName(_ coder: NSCoder, sender: Any?) -> PeopleTableViewController?
     {
         let peopleVC = PeopleTableViewController(coder: coder)
+        peopleVC?.delegate = self
         peopleVC?.noOfPeople = Int(noOfPeopleStepper.value)
+        peopleVC?.people = self.people
         return peopleVC
+    }
+    
+    @IBSegueAction func itemsInfo(_ coder: NSCoder, sender: Any?) -> ItemsTableViewController?
+    {
+        let itemsVC = ItemsTableViewController(coder: coder)
+        itemsVC?.noOfItems = Int(noOfItemsStepper.value)
+        return itemsVC
+    }
+    
+    // MARK: - PeopleTbleViewConrollerDelgate functions
+    
+    func peopleTableViewController(_ controller: PeopleTableViewController, didUpdatePeopleNamesOf people: [Person]?)
+    {
+        guard let people = people else { return }
+        
+        self.people = people
     }
 }
