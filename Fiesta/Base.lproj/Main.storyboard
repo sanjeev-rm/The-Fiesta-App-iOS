@@ -312,6 +312,23 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="gLt-cA-jcJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="n57-ty-72F">
+                            <rect key="frame" x="0.0" y="111" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Fill default names" width="204.5" id="myP-2a-jas">
+                                    <connections>
+                                        <action selector="filleDefaultNamesButtonTapped:" destination="5Eo-bQ-Rnf" id="8T7-jk-UYT"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem width="271" style="plain" systemItem="fixedSpace" id="fTv-7z-sEl"/>
+                                <barButtonItem title="Clear names" id="8Up-aj-h11">
+                                    <connections>
+                                        <action selector="clearNamesButtonTapped:" destination="5Eo-bQ-Rnf" id="RfI-7G-0U4"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personNameCell" id="kJi-dw-Kbo" customClass="PeopleTableViewCell" customModule="Fiesta" customModuleProvider="target">
                                 <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>

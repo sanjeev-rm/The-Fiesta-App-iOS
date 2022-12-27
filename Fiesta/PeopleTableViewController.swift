@@ -45,7 +45,7 @@ class PeopleTableViewController: UITableViewController
             if name == ""
             {
                 // This is for when the user hasn't entered anything then the text will be "".
-                // Therefre assigning default value.
+                // Therefore assigning default value.
                 name = "Person \(indexPath.row + 1)"
             }
             
@@ -80,19 +80,37 @@ class PeopleTableViewController: UITableViewController
     {
         updateAllNames()
         
-        print(people)
-        
         let alertVC = UIAlertController(title: nil, message: "Default names will be inserted for fields that are empty.", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default,  handler: { action in
             self.delegate?.peopleTableViewController(self, didUpdatePeopleNamesOf: self.people)
+            self.tableView.reloadData()
         })
         
         alertVC.addAction(cancelAction)
         alertVC.addAction(updateAction)
         
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func filleDefaultNamesButtonTapped(_ sender: UIBarButtonItem)
+    {
+        for cell in tableView.visibleCells
+        {
+            if (cell as! PeopleTableViewCell).nameTF.hasText == false
+            {
+                (cell as! PeopleTableViewCell).nameTF.text = "Person \(tableView.indexPath(for: cell)!.row + 1)"
+            }
+        }
+    }
+    
+    @IBAction func clearNamesButtonTapped(_ sender: UIBarButtonItem)
+    {
+        for cell in tableView.visibleCells
+        {
+            (cell as! PeopleTableViewCell).nameTF.text = ""
+        }
     }
     
     // MARK: - Table view data source
