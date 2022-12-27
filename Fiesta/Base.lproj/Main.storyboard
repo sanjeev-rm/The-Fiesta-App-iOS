@@ -227,27 +227,60 @@
         <scene sceneID="2NG-5v-GpE">
             <objects>
                 <tableViewController id="upX-Kc-Kxn" customClass="ItemsTableViewController" customModule="Fiesta" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KmD-Hs-6gx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="KmD-Hs-6gx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ZJJ-rn-ZyC">
+                            <rect key="frame" x="0.0" y="155.5" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0"/>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="7Ap-kn-hzq"/>
+                                <barButtonItem title="Clear Names" id="AWR-G6-j48"/>
+                            </items>
+                            <color key="barTintColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" textLabel="oSW-Yz-c1X" style="IBUITableViewCellStyleDefault" id="anN-93-tLH">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="88" id="anN-93-tLH" customClass="ItemsTableViewCell" customModule="Fiesta" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anN-93-tLH" id="am6-Ld-r1F">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oSW-Yz-c1X">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-GW-hqW">
+                                            <rect key="frame" x="20" y="11" width="334" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="xO5-Dy-Vec"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-OC-jW7">
+                                            <rect key="frame" x="20" y="48" width="334" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="LCg-fK-TFg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="x9i-OC-jW7" firstAttribute="top" secondItem="aH4-GW-hqW" secondAttribute="bottom" constant="8" symbolic="YES" id="1k5-tu-3iD"/>
+                                        <constraint firstItem="x9i-OC-jW7" firstAttribute="bottom" secondItem="am6-Ld-r1F" secondAttribute="bottomMargin" id="5Sw-K2-BSd"/>
+                                        <constraint firstItem="aH4-GW-hqW" firstAttribute="top" secondItem="am6-Ld-r1F" secondAttribute="topMargin" id="Afs-W5-6J7"/>
+                                        <constraint firstItem="x9i-OC-jW7" firstAttribute="leading" secondItem="am6-Ld-r1F" secondAttribute="leadingMargin" id="OwD-Mq-9MW"/>
+                                        <constraint firstItem="x9i-OC-jW7" firstAttribute="trailing" secondItem="am6-Ld-r1F" secondAttribute="trailingMargin" id="Q6n-D3-zqk"/>
+                                        <constraint firstItem="aH4-GW-hqW" firstAttribute="trailing" secondItem="am6-Ld-r1F" secondAttribute="trailingMargin" id="aB3-Ww-0jO"/>
+                                        <constraint firstItem="aH4-GW-hqW" firstAttribute="leading" secondItem="am6-Ld-r1F" secondAttribute="leadingMargin" id="bqD-1h-kMC"/>
+                                        <constraint firstItem="x9i-OC-jW7" firstAttribute="top" secondItem="aH4-GW-hqW" secondAttribute="bottom" constant="8" symbolic="YES" id="wPp-fQ-AC2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <outlet property="itemNameTF" destination="aH4-GW-hqW" id="O32-s8-2Z3"/>
+                                    <outlet property="itemPriceTF" destination="x9i-OC-jW7" id="MLI-qY-VRm"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -255,11 +288,13 @@
                             <outlet property="delegate" destination="upX-Kc-Kxn" id="c31-NB-iSH"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Items" largeTitleDisplayMode="never" id="0VF-eK-K67"/>
+                    <navigationItem key="navigationItem" title="Items" largeTitleDisplayMode="never" id="0VF-eK-K67">
+                        <barButtonItem key="rightBarButtonItem" title="Update" style="done" id="nLU-Rq-BYj"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfD-rE-zZq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="-66"/>
+            <point key="canvasLocation" x="1508.6956521739132" y="-66.294642857142861"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6U6-yI-Gq2">
@@ -343,6 +378,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldsValueChanged:" destination="5Eo-bQ-Rnf" eventType="editingChanged" id="i70-5l-1X6"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -365,7 +403,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="fD2-2g-6vk" id="eED-Tn-XOO"/>
+                        <outlet property="updateButton" destination="fD2-2g-6vk" id="rhB-E9-WQO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xV-Qw-YVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

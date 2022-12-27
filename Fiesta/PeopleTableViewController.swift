@@ -19,10 +19,12 @@ class PeopleTableViewController: UITableViewController
     var noOfPeople: Int?
     var people: [Person]?
     
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var updateButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateUpdateButtonState()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,7 +35,27 @@ class PeopleTableViewController: UITableViewController
     
     // MARK: - Update functions
     
-    // MARK: - Function
+    /// This function updates the state of the update button.
+    func updateUpdateButtonState()
+    {
+        // Initially taking true, yes assuming atleast one TF is empty.
+        var isAnyTFEmpty: Bool = true
+        for cell in tableView.visibleCells
+        {
+            if (cell as! PeopleTableViewCell).nameTF.hasText == false
+            {
+                // This means actually one TF is empty so breaking the loop.
+                isAnyTFEmpty = true
+                break
+            }
+            else
+            {
+                isAnyTFEmpty = false
+            }
+        }
+        
+        updateButton.isEnabled = !isAnyTFEmpty
+    }
     
     /// This function updates the names of all the people.
     func updateAllNames()
@@ -79,11 +101,12 @@ class PeopleTableViewController: UITableViewController
     
     // MARK: - Action functions
     
+    /// This function is fired when the update button is tapped.
     @IBAction func updateButtonTapped(_ sender: UIBarButtonItem)
     {
         updateAllNames()
         
-        let alertVC = UIAlertController(title: nil, message: "Default names will be inserted for fields that are empty.", preferredStyle: .actionSheet)
+        let alertVC = UIAlertController(title: "Confirm Update", message: nil, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default,  handler: { action in
@@ -98,6 +121,7 @@ class PeopleTableViewController: UITableViewController
     }
     
     /// This function fills the default values to the text fields that are empty of the vc.
+    /// This functin is fired when the "Fill Default names" button is tapped.
     @IBAction func fillDefaultNamesButton(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
@@ -110,12 +134,19 @@ class PeopleTableViewController: UITableViewController
     }
     
     /// This function clears all the names in the text fields of the vc.
+    /// This function is fired when the "Clear Names" button is tapped.
     @IBAction func clearNamesButtonTapped(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
         {
             (cell as! PeopleTableViewCell).nameTF.text = ""
         }
+    }
+    
+    /// This function is fired everytime the value of the text fields are changed.
+    @IBAction func textFieldsValueChanged(_ sender: UITextField)
+    {
+        updateUpdateButtonState()
     }
     
     // MARK: - Table view data source
