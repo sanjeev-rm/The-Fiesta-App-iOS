@@ -94,7 +94,7 @@ class PeopleTableViewController: UITableViewController
         present(alertVC, animated: true, completion: nil)
     }
     
-    @IBAction func filleDefaultNamesButtonTapped(_ sender: UIBarButtonItem)
+    @IBAction func fillDefaultNamesButton(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
         {
@@ -104,7 +104,6 @@ class PeopleTableViewController: UITableViewController
             }
         }
     }
-    
     @IBAction func clearNamesButtonTapped(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
@@ -143,6 +142,11 @@ class PeopleTableViewController: UITableViewController
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     /*
