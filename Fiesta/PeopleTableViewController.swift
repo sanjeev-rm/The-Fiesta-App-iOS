@@ -33,8 +33,9 @@ class PeopleTableViewController: UITableViewController
     
     // MARK: - Update functions
     
-    // MARK: - Functions
+    // MARK: - Function
     
+    /// This function updates the names of all the people.
     func updateAllNames()
     {
         for cell in tableView.visibleCells
@@ -64,11 +65,13 @@ class PeopleTableViewController: UITableViewController
                 }
                 else
                 {
+                    // This means new person has been added so appending.
                     self.people?.append(Person(name: name, itemsHad: nil))
                 }
             }
             else
             {
+                // This means the people array is nil i.e. no person has been creatd yet so we create the first person and initialize it.
                 self.people = [Person(name: name, itemsHad: nil)]
             }
         }
@@ -94,6 +97,7 @@ class PeopleTableViewController: UITableViewController
         present(alertVC, animated: true, completion: nil)
     }
     
+    /// This function fills the default values to the text fields that are empty of the vc.
     @IBAction func fillDefaultNamesButton(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
@@ -104,6 +108,8 @@ class PeopleTableViewController: UITableViewController
             }
         }
     }
+    
+    /// This function clears all the names in the text fields of the vc.
     @IBAction func clearNamesButtonTapped(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
