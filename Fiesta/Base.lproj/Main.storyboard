@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Party-->
+        <!--Fiesta-->
         <scene sceneID="t5U-Uh-kY9">
             <objects>
                 <tableViewController id="Xpk-Yn-QtY" customClass="CreatePartyTableViewController" customModule="Fiesta" customModuleProvider="target" sceneMemberID="viewController">
@@ -111,7 +111,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Total Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="er1-ql-nGV">
                                                     <rect key="frame" x="20" y="5" width="334" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -132,7 +132,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tax" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpn-0g-wZI">
                                                     <rect key="frame" x="20" y="5" width="334" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -158,7 +158,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="What did each person have?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P10-GY-gtU">
                                                     <rect key="frame" x="20" y="0.0" width="317.5" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -208,7 +208,7 @@
                             <outlet property="delegate" destination="Xpk-Yn-QtY" id="Koy-RG-T9w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Party" id="1XM-57-4Ps"/>
+                    <navigationItem key="navigationItem" title="Fiesta" id="1XM-57-4Ps"/>
                     <connections>
                         <outlet property="calculateButton" destination="59X-Be-3wx" id="910-7M-ueb"/>
                         <outlet property="noOfItemsLabel" destination="Zgx-D4-Icv" id="vjZ-uG-fbV"/>
@@ -231,38 +231,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ZJJ-rn-ZyC">
-                            <rect key="frame" x="0.0" y="155.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="172.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
-                                <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0"/>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="7Ap-kn-hzq"/>
-                                <barButtonItem title="Clear Names" id="AWR-G6-j48"/>
+                                <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0">
+                                    <connections>
+                                        <action selector="fillDefaultNamesButtonTapped:" destination="upX-Kc-Kxn" id="UqO-uj-PsO"/>
+                                    </connections>
+                                </barButtonItem>
                             </items>
                             <color key="barTintColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="88" id="anN-93-tLH" customClass="ItemsTableViewCell" customModule="Fiesta" customModuleProvider="target">
-                                <rect key="frame" x="20" y="49.5" width="374" height="88"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" rowHeight="105" id="anN-93-tLH" customClass="ItemsTableViewCell" customModule="Fiesta" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="anN-93-tLH" id="am6-Ld-r1F">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="105"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-GW-hqW">
-                                            <rect key="frame" x="20" y="11" width="334" height="29"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-GW-hqW">
+                                            <rect key="frame" x="20" y="11" width="334" height="44"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="29" id="xO5-Dy-Vec"/>
+                                                <constraint firstAttribute="height" constant="44" id="ghZ-tu-Inj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="textFieldsValueChanged:" destination="upX-Kc-Kxn" eventType="editingChanged" id="ZKp-4o-9Is"/>
+                                            </connections>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-OC-jW7">
-                                            <rect key="frame" x="20" y="48" width="334" height="29"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="29" id="LCg-fK-TFg"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-OC-jW7">
+                                            <rect key="frame" x="20" y="63" width="334" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            <connections>
+                                                <action selector="textFieldsValueChanged:" destination="upX-Kc-Kxn" eventType="editingChanged" id="vLV-gH-Xdz"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -289,8 +294,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Items" largeTitleDisplayMode="never" id="0VF-eK-K67">
-                        <barButtonItem key="rightBarButtonItem" title="Update" style="done" id="nLU-Rq-BYj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Update" style="done" id="nLU-Rq-BYj">
+                            <connections>
+                                <action selector="updateButtonTapped:" destination="upX-Kc-Kxn" id="O52-4o-A8T"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="updateButton" destination="nLU-Rq-BYj" id="aug-Pa-nl9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfD-rE-zZq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,7 +360,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="n57-ty-72F">
-                            <rect key="frame" x="0.0" y="111" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="111.5" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Fill default names" id="myP-2a-jas">
@@ -356,26 +368,22 @@
                                         <action selector="fillDefaultNamesButton:" destination="5Eo-bQ-Rnf" id="idR-va-UsE"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="oRe-hx-dtR"/>
-                                <barButtonItem title="Clear names" id="8Up-aj-h11">
-                                    <connections>
-                                        <action selector="clearNamesButtonTapped:" destination="5Eo-bQ-Rnf" id="RfI-7G-0U4"/>
-                                    </connections>
-                                </barButtonItem>
                             </items>
                             <color key="barTintColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personNameCell" id="kJi-dw-Kbo" customClass="PeopleTableViewCell" customModule="Fiesta" customModuleProvider="target">
-                                <rect key="frame" x="20" y="49.5" width="374" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personNameCell" rowHeight="44" id="kJi-dw-Kbo" customClass="PeopleTableViewCell" customModule="Fiesta" customModuleProvider="target">
+                                <rect key="frame" x="20" y="49.5" width="374" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kJi-dw-Kbo" id="eBG-Gd-YbR">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Person Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0HT-IB-3AF">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Person Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0HT-IB-3AF">
                                             <rect key="frame" x="20" y="5" width="334" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="mj7-ZK-ojM"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
@@ -383,6 +391,12 @@
                                             </connections>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="0HT-IB-3AF" firstAttribute="top" secondItem="eBG-Gd-YbR" secondAttribute="top" constant="5" id="8g8-Wz-aBQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="0HT-IB-3AF" secondAttribute="bottom" constant="5" id="Q3o-hu-p8B"/>
+                                        <constraint firstAttribute="trailing" secondItem="0HT-IB-3AF" secondAttribute="trailing" constant="20" id="b0S-Kt-Ywg"/>
+                                        <constraint firstItem="0HT-IB-3AF" firstAttribute="leading" secondItem="eBG-Gd-YbR" secondAttribute="leading" constant="20" symbolic="YES" id="ffg-Hj-ADL"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameTF" destination="0HT-IB-3AF" id="bV3-hr-lSN"/>

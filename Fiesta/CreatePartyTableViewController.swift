@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreatePartyTableViewController: UITableViewController, PeopleTableViewControllerDelegate
+class CreatePartyTableViewController: UITableViewController, PeopleTableViewControllerDelegate, ItemsTableViewControllerDelegate
 {
     @IBOutlet weak var noOfPeopleStepper: UIStepper!
     @IBOutlet weak var noOfPeopleLabel: UILabel!
@@ -21,6 +21,7 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
     
     var party: Party? = nil
     var people: [Person]?
+    var items: [Item]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,9 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
     @IBSegueAction func itemsInfo(_ coder: NSCoder, sender: Any?) -> ItemsTableViewController?
     {
         let itemsVC = ItemsTableViewController(coder: coder)
+        itemsVC?.delegate = self
         itemsVC?.noOfItems = Int(noOfItemsStepper.value)
+        itemsVC?.items = self.items
         return itemsVC
     }
     
@@ -80,5 +83,14 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         guard let people = people else { return }
         
         self.people = people
+    }
+    
+    // MARK: - ItemsTableViewControllerDelegate functions
+    
+    func itemsTableViewController(_ controller: ItemsTableViewController, didUpdateItems items: [Item]?)
+    {
+        guard let items = items else { return }
+        
+        self.items = items
     }
 }

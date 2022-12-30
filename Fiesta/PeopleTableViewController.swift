@@ -64,13 +64,7 @@ class PeopleTableViewController: UITableViewController
         {
             guard let indexPath = tableView.indexPath(for: cell) else { return }
             
-            var name = (cell as! PeopleTableViewCell).nameTF.text ?? ""
-            if name == ""
-            {
-                // This is for when the user hasn't entered anything then the text will be "".
-                // Therefore assigning default value.
-                name = "Person \(indexPath.row + 1)"
-            }
+            let name = (cell as! PeopleTableViewCell).nameTF.text ?? ""
             
             if let people = self.people
             {
@@ -111,7 +105,6 @@ class PeopleTableViewController: UITableViewController
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default,  handler: { action in
             self.delegate?.peopleTableViewController(self, didUpdatePeopleNamesOf: self.people)
-            self.tableView.reloadData()
         })
         
         alertVC.addAction(cancelAction)
@@ -131,16 +124,8 @@ class PeopleTableViewController: UITableViewController
                 (cell as! PeopleTableViewCell).nameTF.text = "Person \(tableView.indexPath(for: cell)!.row + 1)"
             }
         }
-    }
-    
-    /// This function clears all the names in the text fields of the vc.
-    /// This function is fired when the "Clear Names" button is tapped.
-    @IBAction func clearNamesButtonTapped(_ sender: UIBarButtonItem)
-    {
-        for cell in tableView.visibleCells
-        {
-            (cell as! PeopleTableViewCell).nameTF.text = ""
-        }
+        
+        updateUpdateButtonState()
     }
     
     /// This function is fired everytime the value of the text fields are changed.
