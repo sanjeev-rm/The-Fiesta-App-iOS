@@ -121,6 +121,7 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         let calculateVC = CalculateTableViewController(coder: coder)
         calculateVC?.people = self.people
         calculateVC?.tax = Double(self.taxTextField.text!)
+        calculateVC?.billTotal = Double(self.totalAmountTextField.text!)
         return calculateVC
     }
     

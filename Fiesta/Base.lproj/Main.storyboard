@@ -131,7 +131,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tax" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpn-0g-wZI">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tax Percentage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fpn-0g-wZI">
                                                     <rect key="frame" x="20" y="5" width="334" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -421,7 +421,16 @@
                             <outlet property="delegate" destination="LST-Br-ag1" id="IcC-0E-kST"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Amounts" id="K1v-TA-ict"/>
+                    <navigationItem key="navigationItem" title="Amounts" id="K1v-TA-ict">
+                        <barButtonItem key="rightBarButtonItem" title="Disclaimer" image="info.circle" catalog="system" style="done" id="O56-nV-JcG">
+                            <connections>
+                                <action selector="infoButtonTapped:" destination="LST-Br-ag1" id="P3P-dt-ZqP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="infoButton" destination="O56-nV-JcG" id="ce2-gl-LVI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHM-hp-EHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -516,4 +525,7 @@
             <point key="canvasLocation" x="-340" y="46"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

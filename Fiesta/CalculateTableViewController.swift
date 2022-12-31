@@ -11,10 +11,15 @@ class CalculateTableViewController: UITableViewController
 {
     var people: [Person]?
     var tax: Double?
+    var billTotal: Double?
+    
+    @IBOutlet weak var infoButton: UIBarButtonItem!
+    
+    var calculatedTotal: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -22,9 +27,21 @@ class CalculateTableViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    func updateInfoButtonState()
+    {
+        if calculatedTotal != billTotal
+        {
+            infoButton.isEnabled = true
+            return
+        }
+        infoButton.isEnabled = false
+        
+        print(calculatedTotal)
+    }
+    
     /// This function calculates the amount to be paid by a person.
-    /// - parameters: person -> The person of type Person.
-    /// - parameters: tax -> the tax percentage.
+    /// - parameter person : The person of type Person.
+    /// - parameter tax : the tax percentage.
     func calculateAmountToBePaidByPerson(person : Person, tax : Double) -> Double
     {
         guard let itemsList = person.itemsHad else { return 0 }
@@ -38,7 +55,17 @@ class CalculateTableViewController: UITableViewController
         let finalAmount = ((100.0 + tax) * (sum)) / 100.0
         return finalAmount
     }
+    
+    // MARK: - Action functions
 
+    @IBAction func infoButtonTapped(_ sender: UIBarButtonItem)
+    {
+        let alertVC = UIAlertController(title: "Disclaimer", message: "Your billed amount (\(billTotal!.formatted(.currency(code: "usd")))) doesn't match the calculated total amount (\(calculatedTotal.formatted(.currency(code: "usd")))).\nCheck the billed amount or maybe go through the inputs once.", preferredStyle: .actionSheet)
+        let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        alertVC.addAction(okayAction)
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,16 +80,20 @@ class CalculateTableViewController: UITableViewController
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "amountCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "amountCell", for: indexPath)
      
-     guard let person = people?[indexPath.row], let tax = tax else { return cell }
+        guard let person = people?[indexPath.row], let tax = tax else { return cell }
 
-     var content = cell.defaultContentConfiguration()
-     content.text = person.name
-     content.secondaryText = calculateAmountToBePaidByPerson(person: person, tax: tax).formatted(.currency(code: "usd"))
-     cell.contentConfiguration = content
-
-     return cell
+        var content = cell.defaultContentConfiguration()
+        content.text = person.name
+        content.secondaryText = calculateAmountToBePaidByPerson(person: person, tax: tax).formatted(.currency(code: "usd"))
+        cell.contentConfiguration = content
+        
+        calculatedTotal = calculatedTotal + calculateAmountToBePaidByPerson(person: person, tax: tax)
+        
+        updateInfoButtonState()
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
