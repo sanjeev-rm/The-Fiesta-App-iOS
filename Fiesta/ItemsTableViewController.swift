@@ -9,6 +9,7 @@ import UIKit
 
 protocol ItemsTableViewControllerDelegate
 {
+    /// This function contains the updated items.
     func itemsTableViewController(_ controller: ItemsTableViewController, didUpdateItems items: [Item]?)
 }
 
@@ -35,8 +36,10 @@ class ItemsTableViewController: UITableViewController
     
     // MARK: - Update functions
     
+    /// This function updates the state of the update button.
     func updateUpdateButtonState()
     {
+        // Initially taking true, yes assuming atleast one TF is empty.
         var isAnyTFEmpty = true
         for cell in tableView.visibleCells
         {
@@ -44,6 +47,7 @@ class ItemsTableViewController: UITableViewController
             
             if itemCell.itemNameTF.hasText == false || itemCell.itemPriceTF.hasText == false
             {
+                // This means actually one TF is empty so breaking the loop.
                 isAnyTFEmpty = true
                 break
             }
@@ -56,6 +60,7 @@ class ItemsTableViewController: UITableViewController
         updateButton.isEnabled = !isAnyTFEmpty
     }
     
+    /// This function updates all the item text fields.
     func updateAllItems()
     {
         for cell in tableView.visibleCells
@@ -86,12 +91,16 @@ class ItemsTableViewController: UITableViewController
         }
     }
     
+    /// This function checks the price text fields if they have an valid value.
+    /// A value is invalid if any caharacters other than 0-9 or '.'  is inputed.
+    /// - returns: Bool -> true if all are valid, false if any is invalid.
     func checkPriceTextFields() -> Bool
     {
         for cell in tableView.visibleCells
         {
             let itemCell = cell as! ItemsTableViewCell
             
+            // Invalid if any value is unable to be converted to Double type.
             if Double(itemCell.itemPriceTF.text!) == nil
             {
                 let alertVC = UIAlertController(title: "Invalid Inputs For Price", message: "Please enter only digits in the price text fields.", preferredStyle: .actionSheet)
@@ -106,12 +115,15 @@ class ItemsTableViewController: UITableViewController
     }
     
     // MARK: - Action functions
-
+    
+    /// This function is fired everytime the text fields' value is changed.
     @IBAction func textFieldsValueChanged(_ sender: UITextField)
     {
         updateUpdateButtonState()
     }
     
+    /// This function is fired when the Fill deault names button is tapped.
+    /// It fills the default names in for the item names.
     @IBAction func fillDefaultNamesButtonTapped(_ sender: UIBarButtonItem)
     {
         for cell in tableView.visibleCells
@@ -127,13 +139,15 @@ class ItemsTableViewController: UITableViewController
         updateUpdateButtonState()
     }
     
+    /// This function is fired when the update butto is tapped.
+    /// It asks two options either to confirm update of cancel.
     @IBAction func updateButtonTapped(_ sender: UIBarButtonItem)
     {
         guard checkPriceTextFields() else { return }
         
         updateAllItems()
         
-        let alertVC = UIAlertController(title: "Confirm Update", message: nil, preferredStyle: .actionSheet)
+        let alertVC = UIAlertController(title: "Confirm Update", message: "Confirm items update.", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default) { action in
@@ -164,6 +178,7 @@ class ItemsTableViewController: UITableViewController
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemsTableViewCell
        
+       // If indexPath.row < items.count is false that means that a new item has been added so we need to get the new info from the user, so run the else block.
        if let items = items, indexPath.row < items.count
        {
            cell.itemNameTF.text = items[indexPath.row].name
@@ -177,50 +192,8 @@ class ItemsTableViewController: UITableViewController
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

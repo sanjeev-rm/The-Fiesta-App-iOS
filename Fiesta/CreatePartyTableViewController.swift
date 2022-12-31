@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreatePartyTableViewController: UITableViewController, PeopleTableViewControllerDelegate, ItemsTableViewControllerDelegate
+class CreatePartyTableViewController: UITableViewController, PeopleTableViewControllerDelegate, ItemsTableViewControllerDelegate, EachPersonItemsHadTableViewControllerDelegate
 {
     @IBOutlet weak var noOfPeopleStepper: UIStepper!
     @IBOutlet weak var noOfPeopleLabel: UILabel!
@@ -19,41 +19,72 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
     
     @IBOutlet weak var calculateButton: UIButton!
     
-    var party: Party? = nil
+    var party : Party?
     var people: [Person]?
     var items: [Item]?
+    
+    /// keeps track if the items had list has been inputed or not.
+    var itemsHadInputed: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateView()
+        updatePeopleItemCountLabel()
         
         updateCalculateButtonState()
     }
     
     // MARK: - Update functions
     
-    func updateView()
+    /// This function updates the people and item count label.
+    func updatePeopleItemCountLabel()
     {
         noOfPeopleLabel.text = noOfPeopleStepper.value.formatted()
         noOfItemsLabel.text = noOfItemsStepper.value.formatted()
     }
     
+    /// This function updates the Calculate button state.
     func updateCalculateButtonState()
     {
-        if party == nil
+        calculateButton.isEnabled = people != nil && items != nil && totalAmountTextField.hasText && taxTextField.hasText && itemsHadInputed
+    }
+    
+    /// This function checks if the total amount tf and tax tf if they have valid inputs.
+    func checkAmountTaxTF() -> Bool
+    {
+        if Double(totalAmountTextField.text!) == nil || Double(taxTextField.text!) == nil
         {
-            calculateButton.isEnabled = false
-            return
+            return false
         }
-        calculateButton.isEnabled = true
+        return true
     }
     
     // MARK: - Action functions
     
+    /// This function is fired everytime the steppers' value is changed.
     @IBAction func stepperValueChanged(_ sender: UIStepper)
     {
-        updateView()
+        updatePeopleItemCountLabel()
+    }
+    
+    /// This function is fired evertytime the two text fields' (total amount & tax)value is changed.
+    @IBAction func textFieldsValueChanged(_ sender: UITextField)
+    {
+        updateCalculateButtonState()
+    }
+    
+    @IBAction func calculateButtonTapped(_ sender: UIButton)
+    {
+        guard checkAmountTaxTF() else
+        {
+            let alertVC = UIAlertController(title: "Invalid inputs for total amount or tax", message: "Please enter only digits in the total amount and tax text fields.", preferredStyle: .actionSheet)
+            let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+            alertVC.addAction(okayAction)
+            present(alertVC, animated: true, completion: nil)
+            return
+        }
+        
+        performSegue(withIdentifier: "calculateSegue", sender: self)
     }
     
     // MARK: - Segue Action functions
@@ -76,6 +107,23 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         return itemsVC
     }
     
+    @IBSegueAction func eachPersonHad(_ coder: NSCoder, sender: Any?) -> EachPersonItemsHadTableViewController?
+    {
+        let eachPersonHadVC = EachPersonItemsHadTableViewController(coder: coder)
+        eachPersonHadVC?.delegate = self
+        eachPersonHadVC?.people = self.people
+        eachPersonHadVC?.items = self.items
+        return eachPersonHadVC
+    }
+    
+    @IBSegueAction func calculateAmountsSegueAction(_ coder: NSCoder, sender: Any?) -> CalculateTableViewController?
+    {
+        let calculateVC = CalculateTableViewController(coder: coder)
+        calculateVC?.people = self.people
+        calculateVC?.tax = Double(self.taxTextField.text!)
+        return calculateVC
+    }
+    
     // MARK: - PeopleTbleViewConrollerDelgate functions
     
     func peopleTableViewController(_ controller: PeopleTableViewController, didUpdatePeopleNamesOf people: [Person]?)
@@ -83,6 +131,8 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         guard let people = people else { return }
         
         self.people = people
+        
+        updateCalculateButtonState()
     }
     
     // MARK: - ItemsTableViewControllerDelegate functions
@@ -92,5 +142,21 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         guard let items = items else { return }
         
         self.items = items
+        
+        updateCalculateButtonState()
+    }
+    
+    // MARK: - EachPersonItemsHadTableViewContollerDelegate functions
+    
+    func eachPersonItemsHadTableViewController(_ controller: EachPersonItemsHadTableViewController, updatedItems items: [Item]?, updatedPeople people: [Person]?)
+    {
+        guard let items = items, let people = people else { return }
+        
+        self.items = items
+        self.people = people
+        
+        itemsHadInputed = true
+        
+        updateCalculateButtonState()
     }
 }
