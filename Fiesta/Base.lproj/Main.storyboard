@@ -212,7 +212,15 @@
                             <outlet property="delegate" destination="Xpk-Yn-QtY" id="Koy-RG-T9w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fiesta" id="1XM-57-4Ps"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Fiesta" id="1XM-57-4Ps">
+                        <barButtonItem key="rightBarButtonItem" title="New" style="done" id="JgE-Zf-61g">
+                            <connections>
+                                <action selector="newButtonTapped:" destination="Xpk-Yn-QtY" id="E4k-sT-UKU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calculateButton" destination="59X-Be-3wx" id="910-7M-ueb"/>
                         <outlet property="noOfItemsLabel" destination="Zgx-D4-Icv" id="vjZ-uG-fbV"/>
@@ -226,7 +234,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0YY-bw-pFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="499" y="46"/>
+            <point key="canvasLocation" x="498.55072463768118" y="45.535714285714285"/>
         </scene>
         <!--Items-->
         <scene sceneID="2NG-5v-GpE">

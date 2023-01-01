@@ -27,6 +27,7 @@ class CalculateTableViewController: UITableViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    /// This function updates the info button state.
     func updateInfoButtonState()
     {
         if calculatedTotal != billTotal
@@ -57,7 +58,9 @@ class CalculateTableViewController: UITableViewController
     }
     
     // MARK: - Action functions
-
+    
+    /// This function is fired when the info button is tapped.
+    /// This button shows a disclaimer if the calculated amount is not equal to the billed amount entered by the user.
     @IBAction func infoButtonTapped(_ sender: UIBarButtonItem)
     {
         let alertVC = UIAlertController(title: "Disclaimer", message: "Your billed amount (\(billTotal!.formatted(.currency(code: "usd")))) doesn't match the calculated total amount (\(calculatedTotal.formatted(.currency(code: "usd")))).\nCheck the billed amount or maybe go through the inputs once.", preferredStyle: .actionSheet)

@@ -19,7 +19,6 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
     
     @IBOutlet weak var calculateButton: UIButton!
     
-    var party : Party?
     var people: [Person]?
     var items: [Item]?
     
@@ -87,6 +86,21 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         performSegue(withIdentifier: "calculateSegue", sender: self)
     }
     
+    /// This function is fired when the new button is tapped.
+    /// This resets the whole view.
+    @IBAction func newButtonTapped(_ sender: UIBarButtonItem)
+    {
+        self.people = nil
+        self.items = nil
+        self.itemsHadInputed = false
+        self.noOfPeopleStepper.value = 0
+        self.noOfItemsStepper.value = 0
+        self.totalAmountTextField.text = ""
+        self.taxTextField.text = ""
+        updatePeopleItemCountLabel()
+        updateCalculateButtonState()
+        tableView.reloadData()
+    }
     // MARK: - Segue Action functions
     
     @IBSegueAction func peoplesName(_ coder: NSCoder, sender: Any?) -> PeopleTableViewController?
