@@ -90,16 +90,25 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
     /// This resets the whole view.
     @IBAction func newButtonTapped(_ sender: UIBarButtonItem)
     {
-        self.people = nil
-        self.items = nil
-        self.itemsHadInputed = false
-        self.noOfPeopleStepper.value = 0
-        self.noOfItemsStepper.value = 0
-        self.totalAmountTextField.text = ""
-        self.taxTextField.text = ""
-        updatePeopleItemCountLabel()
-        updateCalculateButtonState()
-        tableView.reloadData()
+        
+        let alertVC = UIAlertController(title: "New Party", message: "This will create a new party, erasing all the details of the current party.", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let createAction = UIAlertAction(title: "Create", style: .default, handler: { action in
+            self.people = nil
+            self.items = nil
+            self.itemsHadInputed = false
+            self.noOfPeopleStepper.value = 0
+            self.noOfItemsStepper.value = 0
+            self.totalAmountTextField.text = ""
+            self.taxTextField.text = ""
+            self.updatePeopleItemCountLabel()
+            self.updateCalculateButtonState()
+            self.tableView.reloadData()
+        })
+        
+        alertVC.addAction(cancelAction)
+        alertVC.addAction(createAction)
+        present(alertVC, animated: true)
     }
     // MARK: - Segue Action functions
     
