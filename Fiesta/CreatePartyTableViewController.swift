@@ -174,4 +174,11 @@ class CreatePartyTableViewController: UITableViewController, PeopleTableViewCont
         
         updateCalculateButtonState()
     }
+    
+    // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
