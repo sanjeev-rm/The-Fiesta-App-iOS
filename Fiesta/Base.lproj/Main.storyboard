@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ZJJ-rn-ZyC">
-                            <rect key="frame" x="0.0" y="178.5" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="178.5" width="414" height="46"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0">
@@ -315,6 +315,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="fillDefaultNamesButton" destination="lD5-1k-Fa0" id="XXx-si-EC2"/>
                         <outlet property="updateButton" destination="nLU-Rq-BYj" id="aug-Pa-nl9"/>
                     </connections>
                 </tableViewController>
@@ -343,9 +344,10 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-ky-upt">
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-ky-upt">
                                             <rect key="frame" x="260" y="6" width="94" height="32"/>
                                             <connections>
+                                                <action selector="stepperValueChanged:" destination="e7p-Tx-lKR" eventType="valueChanged" id="Qej-Rt-m8G"/>
                                                 <action selector="stepperValueChanged:" destination="cxW-CZ-ZrF" eventType="valueChanged" id="jhW-de-yKE"/>
                                             </connections>
                                         </stepper>
@@ -387,6 +389,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneButton" destination="A9n-L9-0m8" id="Wil-GU-NSt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZj-PH-Gkq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -510,6 +515,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="fillDefaultNamesButton" destination="myP-2a-jas" id="Rg3-Tv-gG7"/>
                         <outlet property="updateButton" destination="fD2-2g-6vk" id="rhB-E9-WQO"/>
                     </connections>
                 </tableViewController>

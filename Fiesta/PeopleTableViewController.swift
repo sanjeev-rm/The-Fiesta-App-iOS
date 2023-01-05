@@ -22,10 +22,12 @@ class PeopleTableViewController: UITableViewController
     
     @IBOutlet weak var updateButton: UIBarButtonItem!
     
+    @IBOutlet weak var fillDefaultNamesButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateUpdateButtonState()
+        updateButtonsState()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,7 +39,8 @@ class PeopleTableViewController: UITableViewController
     // MARK: - Update functions
     
     /// This function updates the state of the update button.
-    func updateUpdateButtonState()
+    /// This function also updates the state of the fill default names button.
+    func updateButtonsState()
     {
         // Initially taking true, yes assuming atleast one TF is empty.
         var isAnyTFEmpty: Bool = true
@@ -56,6 +59,7 @@ class PeopleTableViewController: UITableViewController
         }
         
         updateButton.isEnabled = !isAnyTFEmpty
+        fillDefaultNamesButton.isEnabled = isAnyTFEmpty
     }
     
     /// This function updates the names of all the people.
@@ -106,6 +110,7 @@ class PeopleTableViewController: UITableViewController
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default,  handler: { action in
             self.delegate?.peopleTableViewController(self, didUpdatePeopleNamesOf: self.people)
+            self.updateButton.isEnabled = false
         })
         
         alertVC.addAction(cancelAction)
@@ -126,13 +131,13 @@ class PeopleTableViewController: UITableViewController
             }
         }
         
-        updateUpdateButtonState()
+        updateButtonsState()
     }
     
     /// This function is fired everytime the value of the text fields are changed.
     @IBAction func textFieldsValueChanged(_ sender: UITextField)
     {
-        updateUpdateButtonState()
+        updateButtonsState()
     }
     
     // MARK: - Table view data source

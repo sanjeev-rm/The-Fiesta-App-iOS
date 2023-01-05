@@ -22,10 +22,12 @@ class ItemsTableViewController: UITableViewController
     
     @IBOutlet weak var updateButton: UIBarButtonItem!
     
+    @IBOutlet weak var fillDefaultNamesButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateUpdateButtonState()
+        updateButtonsState()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,13 +39,24 @@ class ItemsTableViewController: UITableViewController
     // MARK: - Update functions
     
     /// This function updates the state of the update button.
-    func updateUpdateButtonState()
+    func updateButtonsState()
     {
         // Initially taking true, yes assuming atleast one TF is empty.
         var isAnyTFEmpty = true
+        var isAnyNameTFEmpty = true
         for cell in tableView.visibleCells
         {
             let itemCell = cell as! ItemsTableViewCell
+            
+            if itemCell.itemNameTF.hasText == false
+            {
+                isAnyNameTFEmpty = true
+                break
+            }
+            else
+            {
+                isAnyNameTFEmpty = false
+            }
             
             if itemCell.itemNameTF.hasText == false || itemCell.itemPriceTF.hasText == false
             {
@@ -58,6 +71,7 @@ class ItemsTableViewController: UITableViewController
         }
         
         updateButton.isEnabled = !isAnyTFEmpty
+        fillDefaultNamesButton.isEnabled = isAnyNameTFEmpty
     }
     
     /// This function updates all the item text fields.
@@ -119,7 +133,7 @@ class ItemsTableViewController: UITableViewController
     /// This function is fired everytime the text fields' value is changed.
     @IBAction func textFieldsValueChanged(_ sender: UITextField)
     {
-        updateUpdateButtonState()
+        updateButtonsState()
     }
     
     /// This function is fired when the Fill deault names button is tapped.
@@ -136,7 +150,7 @@ class ItemsTableViewController: UITableViewController
             }
         }
         
-        updateUpdateButtonState()
+        updateButtonsState()
     }
     
     /// This function is fired when the update butto is tapped.
@@ -152,6 +166,7 @@ class ItemsTableViewController: UITableViewController
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default) { action in
             self.delegate?.itemsTableViewController(self, didUpdateItems: self.items)
+            self.updateButton.isEnabled = false
         }
         
         alertVC.addAction(cancelAction)

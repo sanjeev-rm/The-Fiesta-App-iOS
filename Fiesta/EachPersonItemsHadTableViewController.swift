@@ -20,6 +20,8 @@ class EachPersonItemsHadTableViewController: UITableViewController
     var people: [Person]?
     var items: [Item]?
     
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,12 +86,21 @@ class EachPersonItemsHadTableViewController: UITableViewController
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let updateAction = UIAlertAction(title: "Update", style: .default) { action in
             self.delegate?.eachPersonItemsHadTableViewController(self, updatedItems: self.items, updatedPeople: self.people)
+            self.doneButton.isEnabled = false
         }
         
         alertVC.addAction(cancelAction)
         alertVC.addAction(updateAction)
         
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper)
+    {
+        if doneButton.isEnabled == false
+        {
+            doneButton.isEnabled = true
+        }
     }
     
     // MARK: - Table view data source
