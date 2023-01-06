@@ -29,6 +29,10 @@ class PeopleTableViewController: UITableViewController
         
         updateButtonsState()
         
+        // If people == nil it means that it's the first time so keep the fillDefaultNamesButton button enabled. But if it's false that means that people is already there so fillDefaultNamesButton button is dissabled.
+        // Enabled only if the noOfItems is greater than 0.
+        fillDefaultNamesButton.isEnabled = noOfPeople != 0 && people == nil
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -42,6 +46,7 @@ class PeopleTableViewController: UITableViewController
     /// This function also updates the state of the fill default names button.
     func updateButtonsState()
     {
+        
         // Initially taking true, yes assuming atleast one TF is empty.
         var isAnyTFEmpty: Bool = true
         for cell in tableView.visibleCells

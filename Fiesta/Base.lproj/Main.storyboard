@@ -338,16 +338,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8e-dZ-iaW">
-                                            <rect key="frame" x="241.5" y="11.5" width="10.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-ky-upt">
+                                        <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10000" stepValue="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="D8A-ky-upt">
                                             <rect key="frame" x="260" y="6" width="94" height="32"/>
                                             <connections>
-                                                <action selector="stepperValueChanged:" destination="e7p-Tx-lKR" eventType="valueChanged" id="Qej-Rt-m8G"/>
+                                                <action selector="stepperTFValueChanged:" destination="e7p-Tx-lKR" eventType="valueChanged" id="0QQ-E2-laW"/>
                                                 <action selector="stepperValueChanged:" destination="cxW-CZ-ZrF" eventType="valueChanged" id="jhW-de-yKE"/>
                                             </connections>
                                         </stepper>
@@ -357,22 +351,32 @@
                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" placeholder="0" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pgl-aJ-JCA">
+                                            <rect key="frame" x="241" y="11" width="11" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            <connections>
+                                                <action selector="itemCountTFTextChanged:" destination="cxW-CZ-ZrF" eventType="editingChanged" id="TUL-nR-dKA"/>
+                                                <action selector="stepperTFValueChanged:" destination="e7p-Tx-lKR" eventType="editingChanged" id="1Ku-L0-apP"/>
+                                            </connections>
+                                        </textField>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="D8A-ky-upt" secondAttribute="bottom" constant="6" id="9rR-7a-qIV"/>
-                                        <constraint firstItem="D8A-ky-upt" firstAttribute="leading" secondItem="b8e-dZ-iaW" secondAttribute="trailing" constant="8" symbolic="YES" id="OUV-w7-vAl"/>
+                                        <constraint firstItem="D8A-ky-upt" firstAttribute="leading" secondItem="pgl-aJ-JCA" secondAttribute="trailing" constant="8" symbolic="YES" id="Ii2-NA-Xhd"/>
+                                        <constraint firstItem="D8A-ky-upt" firstAttribute="centerY" secondItem="fe6-6Q-1zv" secondAttribute="centerY" id="PAT-Rf-c8V"/>
                                         <constraint firstItem="D8A-ky-upt" firstAttribute="top" secondItem="2vh-1z-wXa" secondAttribute="top" constant="6" id="U6Y-jB-hVi"/>
-                                        <constraint firstItem="b8e-dZ-iaW" firstAttribute="centerY" secondItem="fe6-6Q-1zv" secondAttribute="centerY" id="X0x-vn-5nt"/>
                                         <constraint firstAttribute="trailing" secondItem="D8A-ky-upt" secondAttribute="trailing" constant="20" symbolic="YES" id="cE7-St-n3D"/>
                                         <constraint firstAttribute="bottom" secondItem="fe6-6Q-1zv" secondAttribute="bottom" constant="6" id="lUO-h6-tpL"/>
+                                        <constraint firstItem="pgl-aJ-JCA" firstAttribute="centerY" secondItem="fe6-6Q-1zv" secondAttribute="centerY" id="lco-vJ-4H6"/>
                                         <constraint firstItem="D8A-ky-upt" firstAttribute="centerY" secondItem="fe6-6Q-1zv" secondAttribute="centerY" id="lrb-tt-QQV"/>
                                         <constraint firstItem="fe6-6Q-1zv" firstAttribute="leading" secondItem="2vh-1z-wXa" secondAttribute="leading" constant="20" symbolic="YES" id="pLk-MR-7no"/>
                                         <constraint firstItem="fe6-6Q-1zv" firstAttribute="top" secondItem="2vh-1z-wXa" secondAttribute="top" constant="6" id="zOr-oj-2TH"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="itemCountLabel" destination="b8e-dZ-iaW" id="vwZ-SW-BXc"/>
                                     <outlet property="itemCountStepper" destination="D8A-ky-upt" id="kXE-rL-w9b"/>
+                                    <outlet property="itemCountTF" destination="pgl-aJ-JCA" id="uqs-9J-A01"/>
                                     <outlet property="itemName" destination="fe6-6Q-1zv" id="w9W-I7-OzN"/>
                                 </connections>
                             </tableViewCell>

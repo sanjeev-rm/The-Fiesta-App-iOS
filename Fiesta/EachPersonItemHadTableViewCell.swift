@@ -10,7 +10,7 @@ import UIKit
 class EachPersonItemHadTableViewCell: UITableViewCell
 {
     @IBOutlet weak var itemName: UILabel!
-    @IBOutlet weak var itemCountLabel: UILabel!
+    @IBOutlet weak var itemCountTF: UITextField!
     @IBOutlet weak var itemCountStepper: UIStepper!
     
     override func awakeFromNib() {
@@ -24,19 +24,35 @@ class EachPersonItemHadTableViewCell: UITableViewCell
         // Configure the view for the selected state
     }
     
-    func updateItemCountLabel()
+    func updateItemCountTF()
     {
-        itemCountLabel.text = itemCountStepper.value.formatted()
+        itemCountTF.text = itemCountStepper.value.formatted()
     }
     
-    func setStepperAndLabelValue(count value: Double)
+    func updateItemCountStepperValue()
+    {
+        guard let tfText = itemCountTF.text, let itemCount = Double(tfText) else
+        {
+            itemCountStepper.value = 0
+            return
+        }
+        
+        itemCountStepper.value = itemCount
+    }
+    
+    func setStepperAndTFValue(count value: Double)
     {
         itemCountStepper.value = value
-        updateItemCountLabel()
+        updateItemCountTF()
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper)
     {
-        updateItemCountLabel()
+        updateItemCountTF()
+    }
+    
+    @IBAction func itemCountTFTextChanged(_ sender: UITextField)
+    {
+        updateItemCountStepperValue()
     }
 }

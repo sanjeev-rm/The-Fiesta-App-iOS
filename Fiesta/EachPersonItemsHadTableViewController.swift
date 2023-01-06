@@ -24,6 +24,8 @@ class EachPersonItemsHadTableViewController: UITableViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        doneButton.isEnabled = !(people == nil || items == nil)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,11 +77,31 @@ class EachPersonItemsHadTableViewController: UITableViewController
         }
     }
     
+    func checkItemCountTF() -> Bool
+    {
+        for cell in tableView.visibleCells
+        {
+            let itemCell = cell as! EachPersonItemHadTableViewCell
+            
+            if itemCell.itemCountTF.text != nil && Double(itemCell.itemCountTF.text!) == nil
+            {
+                let alertVC = UIAlertController(title: "Invalid Inputs", message: "Invalid inputs for items count text fields. Please enter valid decimal inputs.", preferredStyle: .actionSheet)
+                let okayAction = UIAlertAction(title: "Okay", style: .cancel)
+                alertVC.addAction(okayAction)
+                present(alertVC, animated: true)
+                return false
+            }
+        }
+        return true
+    }
+    
     // MARK: - Action functions
     
     /// This function is fired when the done button is tapped.
     @IBAction func doneButtonTapped(_ sender: UIBarButtonItem)
     {
+        guard checkItemCountTF() else { return }
+        
         updatePeopleAndItems()
         
         let alertVC = UIAlertController(title: "Confirm", message: nil, preferredStyle: .actionSheet)
@@ -95,7 +117,7 @@ class EachPersonItemsHadTableViewController: UITableViewController
         present(alertVC, animated: true, completion: nil)
     }
     
-    @IBAction func stepperValueChanged(_ sender: UIStepper)
+    @IBAction func stepperTFValueChanged(_ sender: Any)
     {
         if doneButton.isEnabled == false
         {
@@ -130,11 +152,11 @@ class EachPersonItemsHadTableViewController: UITableViewController
         // This condition indexPath.row < personItemsHad.count is put for situation when the user increases an item then that should reflect here also but, it's not already in the itemsHad list so we can't give it the default value we have to set it 0 initially.
         if let personItemsHad = person.itemsHad, indexPath.row < personItemsHad.count, let itemCount = personItemsHad[indexPath.row].count
         {
-            cell.setStepperAndLabelValue(count: itemCount)
+            cell.setStepperAndTFValue(count: itemCount)
         }
         else
         {
-            cell.setStepperAndLabelValue(count: 0)
+            cell.setStepperAndTFValue(count: 0)
         }
         
         return cell

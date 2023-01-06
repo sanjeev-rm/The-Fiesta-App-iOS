@@ -28,6 +28,10 @@ class ItemsTableViewController: UITableViewController
         super.viewDidLoad()
         
         updateButtonsState()
+        
+        // If items == nil it means that it's the first time so keep the fillDefaultNamesButton button enabled. But if it's false that means that items is already there so fillDefaultNamesButton button is dissabled.
+        // Enabled only if the noOfItems is greater than 0.
+        fillDefaultNamesButton.isEnabled = noOfItems != 0 && items == nil
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
