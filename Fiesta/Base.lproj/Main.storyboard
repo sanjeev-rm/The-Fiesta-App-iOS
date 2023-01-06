@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3W1-HH-GhU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4m-Jz-Fks">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,8 +190,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Calculate" buttonSize="mini">
+                                                        <backgroundConfiguration key="background" cornerRadius="0.0"/>
                                                         <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
                                                     <connections>
                                                         <action selector="calculateButtonTapped:" destination="Xpk-Yn-QtY" eventType="touchUpInside" id="xS3-BQ-tNe"/>
@@ -235,7 +237,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0YY-bw-pFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="498.55072463768118" y="45.535714285714285"/>
+            <point key="canvasLocation" x="1408.6956521739132" y="45.535714285714285"/>
         </scene>
         <!--Items-->
         <scene sceneID="2NG-5v-GpE">
@@ -245,7 +247,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ZJJ-rn-ZyC">
-                            <rect key="frame" x="0.0" y="178.5" width="414" height="46"/>
+                            <rect key="frame" x="0.0" y="179" width="414" height="46"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0">
@@ -321,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AfD-rE-zZq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508.6956521739132" y="-66.294642857142861"/>
+            <point key="canvasLocation" x="2418.840579710145" y="-66.294642857142861"/>
         </scene>
         <!--Each Person Had-->
         <scene sceneID="eEF-0H-87Z">
@@ -399,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZj-PH-Gkq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508.6956521739132" y="606.69642857142856"/>
+            <point key="canvasLocation" x="2418.840579710145" y="606.69642857142856"/>
         </scene>
         <!--Amounts-->
         <scene sceneID="438-ai-Y75">
@@ -432,6 +434,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.94901961089999998" green="0.94901961089999998" blue="0.96862745289999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -452,7 +455,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AHM-hp-EHA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1509" y="1286"/>
+            <point key="canvasLocation" x="2419" y="1334"/>
         </scene>
         <!--People-->
         <scene sceneID="erB-tT-OLv">
@@ -525,12 +528,89 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xV-Qw-YVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508.6956521739132" y="-723.21428571428567"/>
+            <point key="canvasLocation" x="2419" y="-751"/>
+        </scene>
+        <!--Begin View Controller-->
+        <scene sceneID="RZt-4Z-WMR">
+            <objects>
+                <viewController id="h4m-Jz-Fks" customClass="BeginViewController" customModule="Fiesta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rrf-cF-26R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="73" translatesAutoresizingMaskIntoConstraints="NO" id="Tyf-Ql-BJl">
+                                <rect key="frame" x="101" y="360.5" width="212.5" height="175.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="of1-aX-jRj">
+                                        <rect key="frame" x="0.0" y="0.0" width="212.5" height="67.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cc-ob-hYE">
+                                                <rect key="frame" x="0.0" y="0.0" width="212.5" height="29"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Welcome to Fiesta">
+                                                        <attributes>
+                                                            <font key="NSFont" size="24" name="Optima-Bold"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your expense ditributor App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRv-9G-2UJ">
+                                                <rect key="frame" x="0.0" y="47" width="212.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qM0-Ii-tPF">
+                                        <rect key="frame" x="0.0" y="140.5" width="212.5" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Begin">
+                                                    <attributes>
+                                                        <font key="NSFont" size="16" name="Futura-Medium"/>
+                                                        <font key="NSOriginalFont" size="16" name="Webdings"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <color key="baseBackgroundColor" red="0.59999999999999998" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="beginButtonTapped:" destination="h4m-Jz-Fks" eventType="touchUpInside" id="4sV-cQ-nkT"/>
+                                            <segue destination="3W1-HH-GhU" kind="presentation" modalPresentationStyle="fullScreen" id="FxS-74-3T5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="qM0-Ii-tPF" secondAttribute="bottom" id="J0R-0n-CEI"/>
+                                    <constraint firstAttribute="trailing" secondItem="qM0-Ii-tPF" secondAttribute="trailing" id="Xh9-a1-WSa"/>
+                                    <constraint firstItem="qM0-Ii-tPF" firstAttribute="leading" secondItem="Tyf-Ql-BJl" secondAttribute="leading" id="b7I-9A-ycC"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0A0-9l-3xh"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tyf-Ql-BJl" firstAttribute="centerX" secondItem="rrf-cF-26R" secondAttribute="centerX" id="Lk7-iD-HPP"/>
+                            <constraint firstItem="Tyf-Ql-BJl" firstAttribute="centerY" secondItem="rrf-cF-26R" secondAttribute="centerY" id="PQY-RI-vbn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="BkI-dm-xNW">
+                        <barButtonItem key="backBarButtonItem" title="Welcome" id="6tU-0W-utu"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uGB-oj-YgK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-315.94202898550725" y="45.535714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qkV-Xc-waG">
             <objects>
                 <navigationController id="3W1-HH-GhU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="2Hs-ub-NrP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Krx-E5-dGy">
                         <rect key="frame" x="0.0" y="48" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -541,10 +621,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdE-UY-izm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-340" y="46"/>
+            <point key="canvasLocation" x="569.56521739130437" y="45.535714285714285"/>
         </scene>
     </scenes>
     <resources>
         <image name="info.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

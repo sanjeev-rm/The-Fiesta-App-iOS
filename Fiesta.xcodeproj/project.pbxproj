@@ -23,6 +23,7 @@
 		C78C473829508CFF00745D90 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473729508CFF00745D90 /* Item.swift */; };
 		C78C473A29508D3800745D90 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C473929508D3800745D90 /* Person.swift */; };
 		C7BD6FEA295B6B8F002A212C /* ItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BD6FE9295B6B8E002A212C /* ItemsTableViewCell.swift */; };
+		C7E006852968629800BF3645 /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E006842968629800BF3645 /* BeginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		C78C473729508CFF00745D90 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C78C473929508D3800745D90 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		C7BD6FE9295B6B8E002A212C /* ItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTableViewCell.swift; sourceTree = "<group>"; };
+		C7E006842968629800BF3645 /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				C78C472829507F6700745D90 /* Assets.xcassets */,
 				C78C472A29507F6700745D90 /* LaunchScreen.storyboard */,
 				C78C472D29507F6700745D90 /* Info.plist */,
+				C7E006842968629800BF3645 /* BeginViewController.swift */,
 				C78C473529508C3500745D90 /* Party.swift */,
 				C78C473929508D3800745D90 /* Person.swift */,
 				C78C473729508CFF00745D90 /* Item.swift */,
@@ -180,6 +183,7 @@
 				C7123EEC296016B900B22AFF /* EachPersonItemsHadTableViewController.swift in Sources */,
 				C76B9CEF2958C03E00062A5C /* PeopleTableViewController.swift in Sources */,
 				C76F7C51295935BA00C89703 /* PeopleTableViewCell.swift in Sources */,
+				C7E006852968629800BF3645 /* BeginViewController.swift in Sources */,
 				C78C472229507F6500745D90 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
