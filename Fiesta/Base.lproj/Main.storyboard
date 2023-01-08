@@ -217,6 +217,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Fiesta" id="1XM-57-4Ps">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" style="done" id="MCC-9E-I9v">
+                            <connections>
+                                <segue destination="nTO-rT-bwW" kind="unwind" unwindAction="unwindFromFiesta:" id="kKh-Zw-pbJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" style="done" id="JgE-Zf-61g">
                             <connections>
                                 <action selector="newButtonTapped:" destination="Xpk-Yn-QtY" id="E4k-sT-UKU"/>
@@ -236,6 +241,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0YY-bw-pFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="nTO-rT-bwW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1408.6956521739132" y="45.535714285714285"/>
         </scene>
@@ -247,7 +253,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="ZJJ-rn-ZyC">
-                            <rect key="frame" x="0.0" y="179" width="414" height="46"/>
+                            <rect key="frame" x="0.0" y="178.5" width="414" height="45"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Fill Default Names" id="lD5-1k-Fa0">
@@ -580,7 +586,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="beginButtonTapped:" destination="h4m-Jz-Fks" eventType="touchUpInside" id="4sV-cQ-nkT"/>
-                                            <segue destination="3W1-HH-GhU" kind="presentation" modalPresentationStyle="fullScreen" id="FxS-74-3T5"/>
+                                            <segue destination="3W1-HH-GhU" kind="modal" modalPresentationStyle="fullScreen" id="FxS-74-3T5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -625,6 +631,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
