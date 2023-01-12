@@ -46,7 +46,6 @@ class PeopleTableViewController: UITableViewController
     /// This function also updates the state of the fill default names button.
     func updateButtonsState()
     {
-        
         // Initially taking true, yes assuming atleast one TF is empty.
         var isAnyTFEmpty: Bool = true
         for cell in tableView.visibleCells
@@ -65,6 +64,12 @@ class PeopleTableViewController: UITableViewController
         
         updateButton.isEnabled = !isAnyTFEmpty
         fillDefaultNamesButton.isEnabled = isAnyTFEmpty
+        
+        /// For an condition where the user goes back changes the no.of people then enters again. Then the update button should be enabled to update right.
+        if self.noOfPeople != self.people?.count
+        {
+            updateButton.isEnabled = true
+        }
     }
     
     /// This function updates the names of all the people.
@@ -100,6 +105,11 @@ class PeopleTableViewController: UITableViewController
                 // This means the people array is nil i.e. no person has been creatd yet so we create the first person and initialize it.
                 self.people = [Person(name: name, itemsHad: nil)]
             }
+            
+//            if noOfPeople < self.people?.count
+//            {
+//                self.people = self.people.sub
+//            }
         }
     }
     

@@ -59,6 +59,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C74A7FF5296FCF3400A3C8BD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C78C473529508C3500745D90 /* Party.swift */,
+				C78C473929508D3800745D90 /* Person.swift */,
+				C78C473729508CFF00745D90 /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C74A7FF6296FCF8600A3C8BD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C78C47332950867600745D90 /* CreatePartyTableViewController.swift */,
+				C76B9CEE2958C03E00062A5C /* PeopleTableViewController.swift */,
+				C76B9CF02958C05200062A5C /* ItemsTableViewController.swift */,
+				C7123EEB296016B900B22AFF /* EachPersonItemsHadTableViewController.swift */,
+				C7123EF129608A9300B22AFF /* CalculateTableViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C74A7FF7296FCFE200A3C8BD /* Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				C76F7C50295935BA00C89703 /* PeopleTableViewCell.swift */,
+				C7BD6FE9295B6B8E002A212C /* ItemsTableViewCell.swift */,
+				C7123EED29601EE300B22AFF /* EachPersonItemHadTableViewCell.swift */,
+			);
+			path = "Cell Views";
+			sourceTree = "<group>";
+		};
 		C78C471329507F6500745D90 = {
 			isa = PBXGroup;
 			children = (
@@ -85,17 +117,9 @@
 				C78C472A29507F6700745D90 /* LaunchScreen.storyboard */,
 				C78C472D29507F6700745D90 /* Info.plist */,
 				C7E006842968629800BF3645 /* BeginViewController.swift */,
-				C78C473529508C3500745D90 /* Party.swift */,
-				C78C473929508D3800745D90 /* Person.swift */,
-				C78C473729508CFF00745D90 /* Item.swift */,
-				C78C47332950867600745D90 /* CreatePartyTableViewController.swift */,
-				C76B9CEE2958C03E00062A5C /* PeopleTableViewController.swift */,
-				C76F7C50295935BA00C89703 /* PeopleTableViewCell.swift */,
-				C76B9CF02958C05200062A5C /* ItemsTableViewController.swift */,
-				C7BD6FE9295B6B8E002A212C /* ItemsTableViewCell.swift */,
-				C7123EEB296016B900B22AFF /* EachPersonItemsHadTableViewController.swift */,
-				C7123EED29601EE300B22AFF /* EachPersonItemHadTableViewCell.swift */,
-				C7123EF129608A9300B22AFF /* CalculateTableViewController.swift */,
+				C74A7FF5296FCF3400A3C8BD /* Models */,
+				C74A7FF6296FCF8600A3C8BD /* View Controllers */,
+				C74A7FF7296FCFE200A3C8BD /* Cell Views */,
 			);
 			path = Fiesta;
 			sourceTree = "<group>";
